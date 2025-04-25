@@ -218,15 +218,28 @@ async function crawl(page, currentUrl, depth = 0) {
               severity: 'medium'
             });
           }
-    
-          // Validate phone number format
-          const phoneRegex = /^tel:\+?\d[\d\s\-()]{7,}$/i;
-          if (!phoneRegex.test(cleanedHref)) {
+        
+          // Validate href format: tel:+1 followed by exactly 10 digits
+          const hrefRegex = /^tel:\+1\d{10}$/i;
+          if (!hrefRegex.test(cleanedHref)) {
             issues.push({
               page: normalizedUrl,
               link: cleanedHref,
-              type: 'Malformed tel: link',
-              details: 'Telephone link does not contain a valid phone number format',
+              type: 'Incorrect tel: link href format',
+              details: `Expected tel:+1 followed by exactly 10 digits (e.g., tel:+11234567890), got ${cleanedHref}`,
+              severity: 'medium'
+            });
+          }
+        
+          // Validate display text format: xxx.xxx.xxxx
+          const displayText = link.text.trim();
+          const displayRegex = /^\d{3}\.\d{3}\.\d{4}$/;
+          if (!displayRegex.test(displayText)) {
+            issues.push({
+              page: normalizedUrl,
+              link: cleanedHref,
+              type: 'Incorrect tel: link display format',
+              details: `Expected xxx.xxx.xxxx (e.g., 123.456.7890), got ${displayText}`,
               severity: 'medium'
             });
           }
