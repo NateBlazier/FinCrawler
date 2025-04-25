@@ -1,0 +1,36 @@
+# Node.js dependencies
+node_modules/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Optional npm cache directory
+.npm/
+
+# Environment variables
+.env
+.env.*
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# VSCode settings
+.vscode/
+
+# Playwright artifacts
+playwright-report/
+test-results/
+*.png
+*.zip
+*.webm
+*.trace
+
+# Output directory for crawl results, keep the folder but ignore contents
+crawl-results/*
+!crawl-results/.gitkeep
+
+config.json
+
