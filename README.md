@@ -142,5 +142,5 @@ Pull requests and suggestions are welcome! Open an issue to discuss major change
 
 ## ✉️ Author
 
-Built with ❤️ by [Your Name Here]
+Built with ❤️ by Nathaniel Blazier
 
